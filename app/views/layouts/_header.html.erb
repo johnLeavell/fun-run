@@ -14,8 +14,8 @@
           <circle cx="207.5" cy="135" r="130" fill="black" fill-opacity=".3"></circle>
           <circle cx="207.5" cy="135" r="125" fill="white"></circle><circle cx="207.5" cy="135" r="56" fill="#FF9903"></circle>
         </svg>
-        <div class="font-title inline-flex text-lg md:text-2xl"><span class="lowercase">daisy</span>
-          <span class="uppercase text-[#1AD1A5]">UI</span>
+        <div class="font-title inline-flex text-lg md:text-2xl"><span class="lowercase">fun</span>
+          <span class="uppercase text-[#1AD1A5]">RUN</span>
         </div>
       </a>
     </span>
@@ -74,14 +74,35 @@
       </ul>
     </div>
   </div>
-  <div class="flex-none">
-    <button class="btn btn-square btn-ghost">
-      <%= icon "bell", class: 'w-6 h-6' %>
+  <% if user_signed_in? %>
+    <div class="flex-none">
+      <button class="btn btn-square btn-ghost">
+        <%= icon "bell", class: 'w-6 h-6' %>
+      </button>
+    </div>
+    <div class="flex-none">
+      <button class="btn btn-square btn-ghost">
+        <%= icon "search", class: 'w-6 h-6' %>
+      </button>
+    </div>
+    <div>
+      <button class="btn btn-square btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+        </svg>
+      </button>
+    </div>
+      
+
+    <button class="flex-none">
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link link-light text-white', data: { turbo_method: 'delete' } %>
     </button>
-  </div>
-  <div class="flex-none">
-    <button class="btn btn-square btn-ghost">
-      <%= icon "search", class: 'w-6 h-6' %>
-    </button>
-  </div>
+  <% else %>
+    <div class="flex-none">
+      <%= link_to "Sign In", new_user_session_path, class: "btn btn-square btn-ghost" %>
+    </div>
+    <div class="flex-none">
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-square btn-ghost" %>
+    </div>
+  <% end %>
 </div>
