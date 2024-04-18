@@ -1,0 +1,68 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="relative flex flex-col justify-center h-screen overflow-hidden">
+    <div class="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
+      <h1 class="text-3xl font-semibold text-center text-purple-700">Sign Up</h1>
+      <div class="space-y-4">
+        <div>
+          <%= f.label :first_name, class: "label" do %>
+            <span class="text-base label-text">First Name</span>
+          <% end %>
+          <%= f.text_field :first_name, autocomplete: "given-name", class: "w-full input input-bordered input-primary", placeholder: "First Name" %>
+        </div>
+
+        <div>
+          <%= f.label :last_name, class: "label" do %>
+            <span class="text-base label-text">Last Name</span>
+          <% end %>
+          <%= f.text_field :last_name, autocomplete: "family-name", class: "w-full input input-bordered input-primary", placeholder: "Last Name" %>
+        </div>
+        
+        <div>
+          <%= f.label :bottom_size, class: "label" do %>
+          <span class="text-base label-text">Bottom Size</span>
+          <% end %>
+          <%= f.select :bottom_size, options_for_select(["", "Sm", "Md", "Lg","XL", "XXL"]), { prompt: "Select Bottom Size" }, class: "w-full input input-bordered input-primary" %>
+        </div>
+
+
+        <div>
+          <%= f.label :top_size, class: "label" do %>
+            <span class="text-base label-text">Top Size</span>
+          <% end %>
+          <%= f.select :top_size, options_for_select(["", "Sm", "Md", "Lg","XL", "XXL"]), { prompt: "Select Top Size" }, class: "w-full input input-bordered input-primary" %>
+        </div>
+      
+        <div>
+          <%= f.label :email, class: "label" do %>
+            <span class="text-base label-text">Email Address</span>
+          <% end %>
+          <%= f.email_field :email, autocomplete: "email", class: "w-full input input-bordered input-primary", placeholder: "Email Address" %>
+        </div>
+
+        <div>
+          <%= f.label :password, class: "label" do %>
+            <span class="text-base label-text">Password</span>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "w-full input input-bordered input-primary", placeholder: "Enter Password" %>
+        </div>
+        
+        <div>
+          <%= f.label :password_confirmation, class: "label" do %>
+            <span class="text-base label-text">Confirm Password</span>
+          <% end %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full input input-bordered input-primary", placeholder: "Confirm Password" %>
+        </div>
+        
+        <div>
+          <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
+        </div>
+
+        <span>Already have an account ?
+          <%= link_to "Login", new_session_path(resource_name), class: "text-blue-600 hover:text-blue-800 hover:underline" %></span>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
