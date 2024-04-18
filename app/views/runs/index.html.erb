@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Runs</h1>
+
+<div id="runs">
+  <% @runs.each do |run| %>
+    <%= render run %>
+    <p>
+      <%= link_to "Show this run", run %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New run", new_run_path %>

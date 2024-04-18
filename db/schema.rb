@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_18_203636) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_18_211311) do
+  create_table "runs", force: :cascade do |t|
+    t.string "distance"
+    t.string "name"
+    t.integer "vendor_id"
+    t.integer "user_id"
+    t.string "route"
+    t.integer "waivers_count"
+    t.integer "user_runs_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shoes", force: :cascade do |t|
     t.string "size"
     t.string "brand"
