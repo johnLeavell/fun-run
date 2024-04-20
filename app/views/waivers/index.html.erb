@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Waivers</h1>
+
+<div id="waivers">
+  <% @waivers.each do |waiver| %>
+    <%= render waiver %>
+    <p>
+      <%= link_to "Show this waiver", waiver %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New waiver", new_waiver_path %>
