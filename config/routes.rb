@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :waivers
   resources :runs
   resources :shoes
   devise_for :users

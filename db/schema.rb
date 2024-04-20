@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_18_211311) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_18_211658) do
   create_table "runs", force: :cascade do |t|
     t.string "distance"
     t.string "name"
@@ -59,6 +59,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_211311) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "waivers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "run_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

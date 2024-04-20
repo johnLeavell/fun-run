@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @waiver %>
+
+<div>
+  <%= link_to "Edit this waiver", edit_waiver_path(@waiver) %> |
+  <%= link_to "Back to waivers", waivers_path %>
+
+  <%= button_to "Destroy this waiver", @waiver, method: :delete %>
+</div>
