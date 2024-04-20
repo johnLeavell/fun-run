@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_runs
   resources :vendors
   resources :waivers
   resources :runs
