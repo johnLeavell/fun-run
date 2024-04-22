@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_18_211658) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_21_124421) do
+  create_table "likes", force: :cascade do |t|
+    t.integer "fan_id", null: false
+    t.integer "shoe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fan_id"], name: "index_likes_on_fan_id"
+    t.index ["shoe_id"], name: "index_likes_on_shoe_id"
+  end
+
   create_table "runs", force: :cascade do |t|
     t.string "distance"
     t.string "name"
@@ -28,6 +37,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_211658) do
     t.string "brand"
     t.string "model"
     t.string "mileage", default: "0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_runs", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "run_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,6 +77,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_211658) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "vendors", force: :cascade do |t|
+    t.string "name"
+    t.integer "runs_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "waivers", force: :cascade do |t|
     t.integer "user_id"
     t.integer "run_id"
@@ -69,4 +92,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_211658) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "likes", "shoes"
+  add_foreign_key "likes", "users", column: "fan_id"
 end
