@@ -16,6 +16,13 @@ Waiver.destroy_all
   )
 end
 
+# Create sample vendors
+10.times do
+  Vendor.create!(
+    name: Faker::Company.name
+  )
+end
+
 # Create sample users with associated shoes
 50.times do
   user = User.create!(
@@ -32,18 +39,44 @@ end
     shoe_id: Shoe.all.sample.id
   )
   user.save!
+
 end
+
+
+
 
 50.times do
   Run.create!(
     distance: "#{rand(1..10)} miles",
     name: Faker::Lorem.words(number: 3).join(' '),
     user_id: User.all.sample.id,
+    vendor_id: Vendor.all.sample.id,
     route: Faker::Address.street_address,
     waivers_count: rand(0..10),
     user_runs_count: rand(0..10)
   )
 end
 
+20.times do
+  Waiver.create!(
+    user_id: User.all.sample.id,
+    run_id: Run.all.sample.id,
+    name: Faker::Coffee.blend_name
+  )
+end
+
+40.times do
+  UserRun.create!(
+    user_id: User.all.sample.id,
+    run_id: Run.all.sample.id
+  )
+end
+
+50.times do
+  Like.create!(
+    fan_id: User.all.sample.id,
+    shoe_id: Shoe.all.sample.id
+  )
+end
 
 puts "50 sample users with associated shoes created successfully!"

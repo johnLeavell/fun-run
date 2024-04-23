@@ -61,6 +61,7 @@
         <span>Already have an account ?
           <%= link_to "Login", new_session_path(resource_name), class: "text-blue-600 hover:text-blue-800 hover:underline" %></span>
       </div>
+          <%= f.hidden_field :shoe_id %>
     </div>
   </div>
 <% end %>
