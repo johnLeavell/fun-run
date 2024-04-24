@@ -1,25 +1,27 @@
-<h2>Log in</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="relative flex flex-col justify-center h-screen overflow-hidden">
+    <div class="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
+      <h1 class="text-3xl font-semibold text-center text-purple-700">Log In</h1>
+      <div class="space-y-4">
+        <div>
+          <%= f.label :email, class: "label" do %>
+            <span class="text-base label-text">Email Address</span>
+          <% end %>
+          <%= f.email_field :email, autocomplete: "email", class: "w-full input input-bordered input-primary", placeholder: "Email Address" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div>
+          <%= f.label :password, class: "label" do %>
+            <span class="text-base label-text">Password</span>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "w-full input input-bordered input-primary", placeholder: "Enter Password" %>
+        </div>
+        
+        <div>
+          <button type="submit" class="btn btn-block btn-primary">Log In</button>
+        </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
 <% end %>
 
